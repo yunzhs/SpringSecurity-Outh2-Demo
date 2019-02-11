@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 123456
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: 60s
+        min-idle: 0
+    timeout: 10000s
+logging.level.org.springframework.security: DEBUG
+
