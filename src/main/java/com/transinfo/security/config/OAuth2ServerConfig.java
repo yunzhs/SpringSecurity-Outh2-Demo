@@ -60,7 +60,7 @@ public class OAuth2ServerConfig {
         RedisConnectionFactory redisConnectionFactory;
         @Autowired
         UserDetailsService userDetailsService;
-
+            //git分支
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
