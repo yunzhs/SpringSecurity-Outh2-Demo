@@ -24,7 +24,6 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 
 
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true) // 控制权限注解
 public class OAuth2ServerConfig {
 
     private static final String DEMO_RESOURCE_ID = "order";
@@ -32,6 +31,7 @@ public class OAuth2ServerConfig {
     //资源服务器配置
     @Configuration
     @EnableResourceServer
+    @EnableGlobalMethodSecurity(securedEnabled = true) // 控制权限注解
     protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
         @Override
