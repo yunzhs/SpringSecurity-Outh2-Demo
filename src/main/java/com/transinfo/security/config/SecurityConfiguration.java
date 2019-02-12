@@ -22,10 +22,6 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder());
-//    }
 
     @Autowired
     DataSource dataSource;
@@ -50,26 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return userService;
     }
 
-    /**
-     * springboot2.0 删除了原来的 plainTextPasswordEncoder
-     * https://docs.spring.io/spring-security/site/docs/5.0.4.RELEASE/reference/htmlsingle/#10.3.2 DelegatingPasswordEncoder
-     *
-     */
 
 
-    // password 方案一：明文存储，用于测试，不能用于生产
-//    @Bean
-//    PasswordEncoder passwordEncoder(){
-//        return NoOpPasswordEncoder.getInstance();
-//    }
-
-    // password 方案二：用 BCrypt 对密码编码
-//    @Bean
-//    PasswordEncoder passwordEncoder(){
-//        return new BCryptPasswordEncoder();
-//    }
-
-    // password 方案三：支持多种编码，通过密码的前缀区分编码方式,推荐
+    //支持多种编码，通过密码的前缀区分编码方式,官方推荐
     @Bean
     PasswordEncoder passwordEncoder(){
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -77,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     //
 //    /**
-//     * 这一步的配置是必不可少的，否则SpringBoot会自动配置一个AuthenticationManager,覆盖掉内存中的用户
+//     * security5.0后必须要进行配置，否则SpringBoot会自动配置一个AuthenticationManager,覆盖掉内存中的用户
 //     */
     @Bean
     @Override
